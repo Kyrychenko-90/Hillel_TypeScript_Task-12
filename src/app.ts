@@ -60,3 +60,56 @@ interface CategoriesList {
     applyFiltersValue: (filters: Partial<FiltersState>) => void;
     applySearchValue: (searchValue: string) => void;
 }
+
+const applyFiltersValueForMoviesList: MoviesList['applyFiltersValue'] = (filters: Partial<FiltersState>): void => {
+    console.log('Фільтри застосовано до списку фільмів:', filters);
+};
+
+const applySearchValueForMoviesList: MoviesList['applySearchValue'] = (searchValue: string): void => {
+    console.log('Значення пошуку застосовано до списку фільмів:', searchValue);
+};
+
+const moviesList: MoviesList = {
+    movies: [],
+    filtersState: {
+        titleFilter: { filter: '' },
+        releaseYearFilter: { filter: 0 },
+        ratingFilter: { filter: 0 },
+        awardsFilter: { filter: '' },
+    },
+    applyFiltersValue: applyFiltersValueForMoviesList,
+    applySearchValue: applySearchValueForMoviesList,
+};
+
+const applyFiltersValueForCategoriesList: CategoriesList['applyFiltersValue'] = (filters: Partial<FiltersState>): void => {
+    console.log('Фільтри застосовано до списку категорій:', filters);
+};
+
+const applySearchValueForCategoriesList: CategoriesList['applySearchValue'] = (searchValue: string): void => {
+    console.log('Значення пошуку застосовано до списку категорій:', searchValue);
+};
+
+const categoriesList: CategoriesList = {
+    categories: [],
+    filtersState: {
+        titleFilter: { filter: '' },
+        releaseYearFilter: { filter: 0 },
+        ratingFilter: { filter: 0 },
+        awardsFilter: { filter: '' },
+    },
+    applyFiltersValue: applyFiltersValueForCategoriesList,
+    applySearchValue: applySearchValueForCategoriesList,
+};
+
+moviesList.applyFiltersValue({
+    releaseYearFilter: { filter: 2000, filterTo: 2022 },
+    ratingFilter: { filter: 8 },
+});
+
+moviesList.applySearchValue('Гаррі Поттер і Кубок Вогню');
+
+categoriesList.applyFiltersValue({
+    titleFilter: { filter: 'Фентазі' },
+});
+
+categoriesList.applySearchValue('Гаррі Поттер');
