@@ -102,7 +102,7 @@ const categoriesList: CategoriesList = {
 };
 
 moviesList.applyFiltersValue({
-    releaseYearFilter: { filter: 2000, filterTo: 2022 },
+    releaseYearFilter: { filter: 2001, filterTo: 2011 },
     ratingFilter: { filter: 8 },
 });
 
